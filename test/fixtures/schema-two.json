@@ -1,0 +1,64 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "$id": "http://s.curte.us/nnb",
+  "type": "object",
+  "title": "Node Notebook Schema",
+  "required": ["cells"],
+  "properties": {
+    "cells": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["language", "source", "outputs"],
+        "properties": {
+          "language": {
+            "type": "string",
+            "enum": ["typescript", "shellscript", "markdown"]
+          },
+          "source": {
+            "type": "array",
+            "minItems": 1,
+            "description": "Source code of the cell",
+            "items": {
+              "type": "string"
+            }
+          },
+          "outputs": {
+            "title": "Outputs",
+            "type": "array",
+            "items": {
+              "$ref": "#/$defs/output"
+            }
+          }
+        }
+      }
+    }
+  },
+  "$defs": {
+    "output": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/outputItem"
+      }
+    },
+    "outputItem": {
+      "type": "object",
+      "required": ["mime", "value"],
+      "additionalProperties": false,
+      "properties": {
+        "mime": {
+          "type": "string",
+          "title": "mime type",
+          "examples": ["application/vnd.code.notebook.stdout"]
+        },
+        "value": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}

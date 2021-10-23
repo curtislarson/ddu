@@ -1,0 +1,14 @@
+{
+  "cells": [
+    {
+      "language": "typescript",
+      "source": ["console.log('hello world');"],
+      "outputs": []
+    },
+    {
+      "language": "markdown",
+      "source": ["# Hello World"],
+      "outputs": []
+    }
+  ]
+}
