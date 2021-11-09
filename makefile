@@ -1,6 +1,8 @@
-test:
-	deno fmt --check
+clean:
+	deno fmt
 	deno lint
+
+test:
 	deno test --allow-read
 
-.PHONY: test
+.PHONY: clean test
